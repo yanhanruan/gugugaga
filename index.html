@@ -1,0 +1,601 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>guga_initial_market_evidence_balanced</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='initial-market-evidence-guga-ai-desktop-companion'><span>Initial Market Evidence: Guga AI Desktop Companion</span></h1><h2 id='1-core-commercial-thesis'><span>1. Core Commercial Thesis</span></h2><p><span>This product should not be understood as simply “selling sprites.”</span></p><p><span>The underlying commercial logic is:</span></p><blockquote><p><strong><span>Emotional-connection demand + a cute and recognizable character + persistent desktop presence + AI interaction</span></strong></p></blockquote><p><span>A desktop companion can provide a low-pressure sense of presence, responsiveness, and familiarity. Cute character design can make the interaction more approachable and emotionally engaging, while AI adds conversation, memory, personality, and continuity.</span></p><p><span>The evidence below does </span><strong><span>not</span></strong><span> guarantee that Guga will succeed. It shows that the underlying need, adjacent product categories, and several monetization paths already exist.</span></p><hr /><h2 id='2-why-emotional-companionship-has-demand'><span>2. Why Emotional Companionship Has Demand</span></h2><p><span>The World Health Organization reports that approximately </span><strong><span>one in six people worldwide — around 16% — experience loneliness</span></strong><span> (</span><a href='https://www.who.int/teams/social-determinants-of-health/demographic-change-and-healthy-ageing/social-isolation-and-loneliness'><span>WHO</span></a><span>). WHO also notes that loneliness is especially common among adolescents and younger people (</span><a href='https://www.who.int/teams/social-determinants-of-health/demographic-change-and-healthy-ageing/social-isolation-and-loneliness'><span>WHO</span></a><span>).</span></p><p><img src=".assets/image-20260711185511234.png" referrerpolicy="no-referrer" alt="image-20260711185511234"></p><blockquote><p><a href='https://www.who.int/teams/social-determinants-of-health/demographic-change-and-healthy-ageing/social-isolation-and-loneliness' target='_blank' class='url'>https://www.who.int/teams/social-determinants-of-health/demographic-change-and-healthy-ageing/social-isolation-and-loneliness</a></p></blockquote><p><span>This does not mean that every lonely person will purchase an AI companion. It does show that unmet social and emotional connection is a widespread need rather than a niche assumption.</span></p><p><span>A peer-reviewed 2025 study involving </span><strong><span>1,379 college students</span></strong><span> (</span><a href='https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2025.1580826/full'><span>Frontiers in Public Health</span></a><span>) found that loneliness mediated the relationship between depression and more frequent use of conversational AI for companionship (</span><a href='https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2025.1580826/full'><span>Frontiers in Public Health</span></a><span>). This supports the narrower point that some users already turn to conversational AI as a form of compensatory social or emotional interaction.</span></p><h3 id='key-evidence-1'><span>Key Evidence</span></h3><figure><table><thead><tr><th><span>Signal</span></th><th><span>Evidence</span></th><th><span>Interpretation</span></th></tr></thead><tbody><tr><td><span>Global loneliness</span></td><td><span>About </span><strong><span>1 in 6 people / 16% worldwide</span></strong><span> (</span><a href='https://www.who.int/teams/social-determinants-of-health/demographic-change-and-healthy-ageing/social-isolation-and-loneliness'><span>WHO</span></a><span>)</span></td><td><span>Emotional connection is a substantial unmet need</span></td></tr><tr><td><span>Younger audiences</span></td><td><span>WHO identifies adolescents and younger people as especially affected (</span><a href='https://www.who.int/teams/social-determinants-of-health/demographic-change-and-healthy-ageing/social-isolation-and-loneliness'><span>WHO</span></a><span>)</span></td><td><span>The need overlaps with digitally engaged audiences</span></td></tr><tr><td><span>AI companionship behaviour</span></td><td><span>Study sample of </span><strong><span>1,379 students</span></strong><span> (</span><a href='https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2025.1580826/full'><span>Frontiers</span></a><span>)</span></td><td><span>Loneliness is associated with more frequent companion-oriented AI use</span></td></tr></tbody></table></figure><hr /><h2 id='3-consumers-already-pay-for-ai-companionship'><span>3. Consumers Already Pay for AI Companionship</span></h2><p><span>Appfigures estimated that AI companion apps had generated approximately </span><strong><span>US$221 million in cumulative worldwide consumer spending by July 2025</span></strong><span> (</span><a href='https://techcrunch.com/2025/08/12/ai-companion-apps-on-track-to-pull-in-120m-in-2025/'><span>TechCrunch, citing Appfigures</span></a><span>).</span></p><p><span>The same analysis reported that category revenue in 2025 to date was </span><strong><span>64% higher than during the same period in 2024</span></strong><span> (</span><a href='https://techcrunch.com/2025/08/12/ai-companion-apps-on-track-to-pull-in-120m-in-2025/'><span>TechCrunch, citing Appfigures</span></a><span>). It also reported that approximately </span><strong><span>33 AI companion apps had exceeded US$1 million in lifetime consumer spending</span></strong><span> (</span><a href='https://techcrunch.com/2025/08/12/ai-companion-apps-on-track-to-pull-in-120m-in-2025/'><span>TechCrunch, citing Appfigures</span></a><span>).</span></p><p><span>These estimates show that users already pay for personalized digital companionship. They also show that the category is competitive: the top </span><strong><span>10% of apps generated 89% of category revenue</span></strong><span> (</span><a href='https://techcrunch.com/2025/08/12/ai-companion-apps-on-track-to-pull-in-120m-in-2025/'><span>TechCrunch, citing Appfigures</span></a><span>). The opportunity is real, but execution and positioning matter.</span></p><center>
+  <img src="https://techcrunch.com/wp-content/uploads/2025/08/ai-companion-app-releases-in-h1.png?w=680" width="45%"><img src="https://techcrunch.com/wp-content/uploads/2025/08/ai-companion-app-releases-by-year.png?w=680" width="45%">
+</center><h3 id='key-evidence-2'><span>Key Evidence</span></h3><figure><table><thead><tr><th><span>Metric</span></th><th style='text-align:right;' ><span>Data</span></th><th><span>Interpretation</span></th></tr></thead><tbody><tr><td><span>Cumulative AI companion spending</span></td><td style='text-align:right;' ><strong><span>US$221 million by July 2025</span></strong><span> (</span><a href='https://techcrunch.com/2025/08/12/ai-companion-apps-on-track-to-pull-in-120m-in-2025/'><span>source</span></a><span>)</span></td><td><span>Users already pay for digital companionship</span></td></tr><tr><td><span>Revenue growth</span></td><td style='text-align:right;' ><strong><span>+64% year over year</span></strong><span> (</span><a href='https://techcrunch.com/2025/08/12/ai-companion-apps-on-track-to-pull-in-120m-in-2025/'><span>source</span></a><span>)</span></td><td><span>The category was still expanding</span></td></tr><tr><td><span>Apps above US$1M lifetime spending</span></td><td style='text-align:right;' ><span>About </span><strong><span>33 apps</span></strong><span> (</span><a href='https://techcrunch.com/2025/08/12/ai-companion-apps-on-track-to-pull-in-120m-in-2025/'><span>source</span></a><span>)</span></td><td><span>Commercial success is not limited to one isolated company</span></td></tr><tr><td><span>Revenue concentration</span></td><td style='text-align:right;' ><span>Top </span><strong><span>10% generated 89%</span></strong><span> (</span><a href='https://techcrunch.com/2025/08/12/ai-companion-apps-on-track-to-pull-in-120m-in-2025/'><span>source</span></a><span>)</span></td><td><span>Strong differentiation is necessary</span></td></tr></tbody></table></figure><blockquote><p><strong><span>Data note:</span></strong><span> Appfigures figures are third-party app-store estimates, not audited financial statements from every company.</span></p></blockquote><hr /><h2 id='4-desktop-mate-paid-desktop-characters-at-scale'><span>4. Desktop Mate: Paid Desktop Characters at Scale</span></h2><p><span>Desktop Mate is a direct precedent for persistent desktop characters.</span></p><p><span>The developer announced that Desktop Mate had exceeded </span><strong><span>two million cumulative downloads by June 2026</span></strong><span> (</span><a href='https://www.infiniteloop.co.jp/pr-blog/2026/06/desktop-mate-2-million-downloads/'><span>infiniteloop official announcement</span></a><span>).</span></p><p><img src=".assets/image-20260711192007802.png" referrerpolicy="no-referrer" alt="image-20260711192007802"></p><p><span>The product uses a free base application with paid licensed character DLC. Selected characters are listed at </span><strong><span>US$14.99</span></strong><span> (</span><a href='https://store.steampowered.com/app/3359730/Hatsune_Miku_DLC/'><span>Steam: Hatsune Miku DLC</span></a><span>), demonstrating a clear free-software-plus-paid-character model.</span></p><p><img src=".assets/image-20260711192054933.png" referrerpolicy="no-referrer" alt="image-20260711192054933"></p><p><span>The Steam description shows characters sitting on application windows, reacting to the cursor, and remaining present on the user’s desktop (</span><a href='https://store.steampowered.com/app/3301060/Desktop_Mate/'><span>Desktop Mate on Steam</span></a><span>).</span></p><h3 id='what-desktop-mate-demonstrates'><span>What Desktop Mate Demonstrates</span></h3><figure><table><thead><tr><th><span>Evidence</span></th><th style='text-align:right;' ><span>Data</span></th><th><span>Commercial implication</span></th></tr></thead><tbody><tr><td><span>Product reach</span></td><td style='text-align:right;' ><strong><span>2 million+ downloads by June 2026</span></strong><span> (</span><a href='https://www.infiniteloop.co.jp/pr-blog/2026/06/desktop-mate-2-million-downloads/'><span>source</span></a><span>)</span></td><td><span>Large-scale interest in persistent desktop characters</span></td></tr><tr><td><span>Base product</span></td><td style='text-align:right;' ><span>Free application (</span><a href='https://store.steampowered.com/app/3301060/Desktop_Mate/'><span>source</span></a><span>)</span></td><td><span>Low-friction user acquisition</span></td></tr><tr><td><span>Character monetization</span></td><td style='text-align:right;' ><span>Selected DLC at </span><strong><span>US$14.99</span></strong><span> (</span><a href='https://store.steampowered.com/app/3359730/Hatsune_Miku_DLC/'><span>source</span></a><span>)</span></td><td><span>Users can be monetized at the individual-character level</span></td></tr><tr><td><span>Value proposition</span></td><td style='text-align:right;' ><span>Persistent visual presence and interaction (</span><a href='https://store.steampowered.com/app/3301060/Desktop_Mate/'><span>source</span></a><span>)</span></td><td><span>The desktop-companion behaviour is already understandable to users</span></td></tr></tbody></table></figure><p><span>Desktop Mate does not prove that every desktop companion will be profitable. It does directly disprove the claim that there is no established model for monetizing persistent desktop characters.</span></p><hr /><h2 id='5-vpet-simulator-a-second-successful-desktop-pet-example'><span>5. VPet-Simulator: A Second Successful Desktop-Pet Example</span></h2><p><span>VPet-Simulator provides a second, independent example of strong demand for desktop pets.</span></p><p><span>The Steam product describes itself as free, open-source desktop-pet software with feeding interactions, Steam Workshop support, and more than </span><strong><span>200 types of animation</span></strong><span> (</span><a href='https://store.steampowered.com/app/1920960/VPetSimulator/'><span>VPet-Simulator on Steam</span></a><span>).</span></p><p><span>As of July 2026, the Steam page showed </span><strong><span>51,311 total user reviews</span></strong><span>, of which </span><strong><span>50,440 were positive</span></strong><span> (</span><a href='https://store.steampowered.com/app/1920960/VPetSimulator/'><span>VPet-Simulator on Steam</span></a><span>). SteamDB recorded an all-time peak of </span><strong><span>85,551 concurrent players</span></strong><span> (</span><a href='https://steamdb.info/app/1920960/charts/'><span>SteamDB</span></a><span>).</span></p><p><span>These figures do not provide audited revenue because the base application is free. They do provide strong evidence that a cute, interactive desktop pet can attract and retain a very large audience.</span></p><h3 id='what-vpet-simulator-demonstrates'><span>What VPet-Simulator Demonstrates</span></h3><figure><table><thead><tr><th><span>Evidence</span></th><th style='text-align:right;' ><span>Data</span></th><th><span>Commercial implication</span></th></tr></thead><tbody><tr><td><span>User response</span></td><td style='text-align:right;' ><strong><span>51,311 total Steam reviews</span></strong><span> (</span><a href='https://store.steampowered.com/app/1920960/VPetSimulator/'><span>source</span></a><span>)</span></td><td><span>Large-scale product adoption and engagement</span></td></tr><tr><td><span>Positive response</span></td><td style='text-align:right;' ><strong><span>50,440 positive reviews</span></strong><span> (</span><a href='https://store.steampowered.com/app/1920960/VPetSimulator/'><span>source</span></a><span>)</span></td><td><span>Strong user satisfaction</span></td></tr><tr><td><span>Peak usage</span></td><td style='text-align:right;' ><strong><span>85,551 all-time concurrent players</span></strong><span> (</span><a href='https://steamdb.info/app/1920960/charts/'><span>source</span></a><span>)</span></td><td><span>Desktop-pet software can achieve viral-scale attention</span></td></tr><tr><td><span>Content depth</span></td><td style='text-align:right;' ><span>More than </span><strong><span>200 animation types</span></strong><span> (</span><a href='https://store.steampowered.com/app/1920960/VPetSimulator/'><span>source</span></a><span>)</span></td><td><span>Reactions and animation variety are part of the value</span></td></tr><tr><td><span>Community ecosystem</span></td><td style='text-align:right;' ><span>Steam Workshop support (</span><a href='https://store.steampowered.com/app/1920960/VPetSimulator/'><span>source</span></a><span>)</span></td><td><span>User-created content can extend retention and variety</span></td></tr></tbody></table></figure><p><span>VPet-Simulator is particularly relevant because it shows that desktop-pet demand is not limited to famous licensed IP. A well-designed original cute character can also attract a substantial community.</span></p><p><strong><span>VPet-Simulator basic info</span></strong>
+<img src=".assets/image-20260711190125153.png" referrerpolicy="no-referrer" alt="image-20260711190125153"></p><blockquote><p><a href='https://store.steampowered.com/app/1920960/VPetSimulator/' target='_blank' class='url'>https://store.steampowered.com/app/1920960/VPetSimulator/</a></p></blockquote><p>&nbsp;</p><p><strong><span>all-time peak of 85,551 concurrent players evidence</span></strong></p><p><img src=".assets/image-20260711185946410.png" referrerpolicy="no-referrer" alt="image-20260711185946410"></p><blockquote><p><a href='https://steamdb.info/app/1920960/charts/' target='_blank' class='url'>https://steamdb.info/app/1920960/charts/</a></p></blockquote><p>&nbsp;</p><hr /><h2 id='6-why-cute-character-design-matters'><span>6. Why Cute Character Design Matters</span></h2><p><span>The claim should not be that “cute things always sell.” A more defensible claim is:</span></p><blockquote><p><strong><span>Cute and expressive character design can increase emotional appeal, identification, closeness, and purchase intention.</span></strong></p></blockquote><p><span>A study published in the </span><em><span>Journal of Business Research</span></em><span> found that stronger identification with cute character imagery increased intention to purchase character merchandise, while emotional value and self-image congruence influenced impulse buying (</span><a href='https://www.sciencedirect.com/science/article/abs/pii/S0148296321009735'><span>ScienceDirect</span></a><span>).</span></p><p><span>This is commercially relevant because an AI companion is not purchased only for technical capability. Users may also be paying for:</span></p><ul><li><span>emotional comfort;</span></li><li><span>a character they enjoy looking at;</span></li><li><span>a stable and recognizable personality;</span></li><li><span>a feeling of familiarity;</span></li><li><span>collectible or customizable character content.</span></li></ul><p><span>The character is therefore not merely decoration around the AI. It is part of the product’s emotional value and differentiation.</span></p><hr /><h2 id='7-the-combined-opportunity'><span>7. The Combined Opportunity</span></h2><p><span>The proposed product sits between two already-demonstrated categories:</span></p><h3 id='ai-companions'><span>AI Companions</span></h3><p><span>Users pay for:</span></p><ul><li><span>conversation;</span></li><li><span>memory and personalization;</span></li><li><span>voice;</span></li><li><span>role-play;</span></li><li><span>emotional responsiveness;</span></li><li><span>continuity over time.</span></li></ul><h3 id='desktop-pets-and-characters'><span>Desktop Pets and Characters</span></h3><p><span>Users respond to:</span></p><ul><li><span>persistent visual presence;</span></li><li><span>cute character design;</span></li><li><span>animation and reactions;</span></li><li><span>character DLC;</span></li><li><span>customization;</span></li><li><span>community-created content.</span></li></ul><h3 id='guga-product-thesis'><span>Guga Product Thesis</span></h3><p><span>A Guga desktop companion could combine both categories:</span></p><blockquote><p><span>A recognizable character who remains on the desktop, reacts to the user, speaks with a consistent personality, remembers previous interactions, and becomes more familiar over time.</span></p></blockquote><p><span>The value is not simply the sprite. The value is the </span><strong><span>relationship layer</span></strong><span> added to an appealing character.</span></p><hr /><h2 id='8-potential-monetization-models'><span>8. Potential Monetization Models</span></h2><figure><table><thead><tr><th><span>Model</span></th><th><span>Structure</span></th><th><span>Supporting precedent</span></th></tr></thead><tbody><tr><td><span>Free base app + paid character DLC</span></td><td><span>Free entry, characters sold separately</span></td><td><span>Desktop Mate characters listed at </span><strong><span>US$14.99</span></strong><span> (</span><a href='https://store.steampowered.com/app/3359730/Hatsune_Miku_DLC/'><span>source</span></a><span>)</span></td></tr><tr><td><span>One-time purchase</span></td><td><span>Pay once for the desktop companion</span></td><td><span>Common desktop-software model</span></td></tr><tr><td><span>AI subscription</span></td><td><span>Recurring fee for memory, voice, or cloud conversation</span></td><td><span>AI companion apps generated </span><strong><span>US$221M cumulative spending by July 2025</span></strong><span> (</span><a href='https://techcrunch.com/2025/08/12/ai-companion-apps-on-track-to-pull-in-120m-in-2025/'><span>source</span></a><span>)</span></td></tr><tr><td><span>Cosmetic packs</span></td><td><span>Outfits, voices, expressions, and animations</span></td><td><span>Character-DLC model demonstrated by Desktop Mate (</span><a href='https://store.steampowered.com/dlc/3301060/Desktop_Mate/'><span>source</span></a><span>)</span></td></tr></tbody></table></figure></div></div>
+</body>
+</html>
