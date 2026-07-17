@@ -12,7 +12,7 @@ what i believe guga app would be like:
 
 **cute chibi animations/interactions:** this is very important because "humans are visual animals"，and even though i haven't created a guga animation (def in the future), i think you can refer to the "Mutsumi" animation below:
 
-<p align="center">
+<p align="center" class="gu-chibi-row">
   <img src="docs/images/headpat.avif" width="105" alt="headpat" />  
   <img src="docs/images/music1.avif" width="105" alt="music reaction 1" />
   <img src="docs/images/music2.avif" width="105" alt="music reaction 2" />
